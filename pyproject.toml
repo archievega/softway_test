@@ -1,0 +1,45 @@
+[project]
+name = "softway-test"
+version = "0.1.0"
+description = "Mini task processing service"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "alembic>=1.18.4",
+    "asyncpg>=0.31.0",
+    "dishka>=1.6.0",
+    "fastapi>=0.133.0",
+    "greenlet>=3.2.4",
+    "pydantic-settings>=2.13.1",
+    "redis>=7.2.0",
+    "sqlalchemy>=2.0.46",
+    "taskiq>=0.11.18",
+    "taskiq-redis>=1.0.6",
+    "uvicorn>=0.41.0",
+]
+
+[dependency-groups]
+lint = [
+    "mypy>=1.18.1",
+    "ruff>=0.13.2",
+    "ty>=0.0.18",
+]
+test = [
+    "aiosqlite>=0.21.0",
+    "httpx>=0.28.1",
+    "pytest>=8.4.2",
+    "pytest-asyncio>=1.2.0",
+]
+dev = [
+    { include-group = "lint" },
+    { include-group = "test" },
+    "ipython>=9.5.0",
+    "pre-commit>=4.3.0",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
