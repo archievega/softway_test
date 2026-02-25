@@ -8,7 +8,8 @@
 
 ```bash
 cp .env.example .env
-docker compose up --build
+docker compose up -d --build # Запуск всего стека, кроме самих сервисов
+docker compose -f docker-compose.dev.yml up -d # Запуск БД + Redis
 ```
 
 Что поднимется:
@@ -27,20 +28,20 @@ uv sync --group dev
 cp .env.example .env
 set -a && source .env && set +a
 alembic upgrade head
-PYTHONPATH=src uv run uvicorn task_service.main:app --reload
+uv run uvicorn task_service.main:app --reload
 ```
 
 Во втором терминале запустить воркер:
 
 ```bash
 set -a && source .env && set +a
-PYTHONPATH=src uv run taskiq worker task_service.presentation.taskiq.broker:broker
+uv run taskiq worker task_service.presentation.taskiq.broker:broker
 ```
 
 Проверка тестов:
 
 ```bash
-PYTHONPATH=src uv run pytest -q
+uv run pytest -q -v
 ```
 
 ## Описание архитектуры
