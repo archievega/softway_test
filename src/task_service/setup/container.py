@@ -1,5 +1,6 @@
 from dishka import AsyncContainer, make_async_container
 from dishka.integrations.fastapi import FastapiProvider
+from dishka.integrations.taskiq import TaskiqProvider
 
 from task_service.adapters.config import Settings
 from task_service.setup.providers import (
@@ -17,6 +18,7 @@ def create_container(settings: Settings) -> AsyncContainer:
         QueueProvider(),
         AppProvider(),
         FastapiProvider(),
+        TaskiqProvider(),
         context={Settings: settings},
     )
 

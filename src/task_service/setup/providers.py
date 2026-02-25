@@ -52,7 +52,7 @@ class DatabaseProvider(Provider):
 class QueueProvider(Provider):
     @provide(scope=Scope.APP)
     async def get_queue(self) -> AsyncIterable[TaskQueue]:
-        from task_service.presentation.taskiq import process_task_job
+        from task_service.presentation.taskiq.tasks import process_task_job
 
         async def enqueue_task(task_id: int) -> object:
             return await process_task_job.kiq(task_id)

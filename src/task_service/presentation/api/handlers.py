@@ -9,7 +9,7 @@ from task_service.app import (
     TaskQueryUseCase,
 )
 from task_service.domain import TaskStatus
-from task_service.presentation.schemas import (
+from task_service.presentation.api.schemas import (
     TaskCreateRequest,
     TaskListResponse,
     TaskResponse,

@@ -35,7 +35,7 @@ uv run uvicorn task_service.main:app --reload
 
 ```bash
 set -a && source .env && set +a
-uv run taskiq worker task_service.presentation.taskiq.broker:broker
+uv run taskiq worker task_service.presentation.taskiq.worker_broker:broker
 ```
 
 Проверка тестов:
